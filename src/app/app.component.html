@@ -1,0 +1,69 @@
+<div class="page">
+  <section>
+    <button (click)="onPrevPage()">prev</button>
+
+    <input #number type="number" [(ngModel)]="pageNum" (keyup.enter)="onGoPage(pageNum)" />
+
+    <button (click)="onNextPage()">next</button>
+    <span #page_num></span> / <span>{{page_count}}</span>
+
+    <span> | </span>
+
+    <button (click)="webViewerRotateCw()">rotate +90</button>
+    <button (click)="webViewerRotateCcw()">rotate -90</button>
+
+    <span> | </span>
+
+    <button (click)="zoomIn()">zoom in</button>
+    <button (click)="zoomOut()">zoom out</button>
+    <span>{{scale}}%</span>
+
+    <button (click)="fitWidth()">fit width</button>
+    <button (click)="fitPage()">fit page</button>
+
+
+    <span> | </span>
+
+    <button (click)="testTesseract()">tesseract</button>
+    <button (click)="testNaverOCR()">naver OCR</button>
+
+
+    <span> | </span>
+
+    <button (click)="changeMode()">change mode</button>
+    <button (click)="setObject()">object</button>
+    <button (click)="setPencil()">pencil</button>
+    <button (click)="setHighlighter()">highlighter</button>
+    <button (click)="setEraser()">eraser</button>
+    <button (click)="removeObj()">remove object</button>
+    <button (click)="setClear()">clear</button>
+
+    <span> | </span>
+
+    <button (click)="addTextBox()">Add TextBox</button>
+
+    <span> | </span>
+
+    <button (click)="getCanvasData()">save</button>
+
+    <span> | </span>
+
+    <form (ngSubmit)="searchData()">
+      <input id="searchInput" type="text" />
+      <button type="submit">search</button>
+    </form>
+  </section>
+  <div class="flex_container">
+    <section #viewerContainer class="container" [dragScroll]="dragMode">
+      <div #canvasContainer class="canvas_container">
+        <canvas #pdfViewer class="canvas"></canvas>
+
+        <canvas #fabricViewer class="canvas" id="fabricCanvas"></canvas>
+        <div #fabricGuard class="guard"></div>
+      </div>
+
+    </section>
+  </div>
+
+
+</div>
